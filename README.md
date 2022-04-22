@@ -1,1 +1,3 @@
-# spring-boot-gradle-example
+# crypto-metrics
+
+API that returns cryptocurrency metrics
