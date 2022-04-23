@@ -1,5 +1,6 @@
 package com.example.demo.helloMetaverseController;
 
+import com.example.demo.services.CryptoData;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -7,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import com.example.demo.services.CryptoData;
 
 @RestController
 public class HelloMetaverse {
@@ -23,10 +22,10 @@ public class HelloMetaverse {
 		return "Hello Metaverse!";
 	}
 
-	@RequestMapping(value = "/metrics")
-	public @ResponseBody String getCryptoMetrics() {
+	@RequestMapping(value = "/metrics/{symbol}")
+	public @ResponseBody String getCryptoMetrics(@PathVariable String symbol) {
 		CryptoData cryptoData = new CryptoData();
-		String cryptoMetrics = cryptoData.getCryptoDataFromMessari();
+		String cryptoMetrics = cryptoData.getCryptoDataFromMessari(symbol);
 		return cryptoMetrics;
 	}
 
