@@ -26,6 +26,7 @@ public class HelloMetaverse {
 	public @ResponseBody String getCryptoMetrics(@PathVariable String symbol) {
 		CryptoData cryptoData = new CryptoData();
 		String cryptoMetrics = cryptoData.getCryptoDataFromMessari(symbol);
+		
 		return cryptoMetrics;
 	}
 
